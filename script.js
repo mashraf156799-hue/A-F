@@ -3,11 +3,11 @@ const weddingConfig = {
     groomEn: "Abdelghany",
     brideAr: "فرح",
     brideEn: "Farah",
-    dateAr: "25 سبتمبر 2026",
-    dateEn: "25 September 2026",
+    dateAr: "25 سبتمبر 2026 - 8 مساءً",
+    dateEn: "25 September 2026 - 8 PM",
     dayAr: "الجمعة",
     dayEn: "Friday",
-    numericDate: "2026-09-25T00:00:00", 
+    numericDate: "2026-09-25T20:00:00", 
     venueAr: "وادي القمر – قاعة تمر حنة",
     venueEn: "Wadi El Qamar – Tamr Henna",
     mapsUrl: "https://maps.app.goo.gl/BT6Z2wF7fFvdNmbr9?g_st=ac",
@@ -235,7 +235,7 @@ function applyConfiguration() {
     if (els.domVenueName2) els.domVenueName2.innerHTML = createBilingual(venueAr2, venueEn2);
     if (els.domVenueLink) els.domVenueLink.href = weddingConfig.mapsUrl;
 
-    if (els.domFinalCouple) els.domFinalCouple.innerHTML = createBilingual(`${weddingConfig.groomAr} × ${weddingConfig.brideAr}`, `${weddingConfig.groomEn} × ${weddingConfig.brideEn}`);
+    if (els.domFinalCouple) els.domFinalCouple.innerHTML = createBilingual(`${weddingConfig.groomAr} & ${weddingConfig.brideAr}`, `${weddingConfig.groomEn} & ${weddingConfig.brideEn}`);
     if (els.domFinalDate) els.domFinalDate.innerHTML = createBilingual(`${weddingConfig.dayAr} ${weddingConfig.dateAr.replace(' 2026', '')}`, `${weddingConfig.dayEn} ${weddingConfig.dateEn.replace(' 2026', '')}`);
     if (els.domFinalVenue) els.domFinalVenue.innerHTML = createBilingual(weddingConfig.venueAr, weddingConfig.venueEn);
 
