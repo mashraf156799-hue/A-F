@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>THE WEDDING FILM | عبد الغني × فرح</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading locked" data-lang="ar">
+    <!-- Language Toggle removed -->
+
+    <!-- Admin Gear -->
+    <button class="admin-gear" id="btnAdmin">⚙️</button>
+
+    <!-- Admin Modal -->
+    <div class="admin-modal" id="adminModal">
+        <div class="admin-content" id="adminLogin">
+            <h2>Admin Login</h2>
+            <input type="password" id="adminPass" placeholder="Password">
+            <button id="btnLogin">Login</button>
+            <button id="btnCloseAdmin" class="close-admin">Cancel</button>
+        </div>
+        <div class="admin-content" id="adminDashboard" style="display:none;">
+            <h2>Upload Photos</h2>
+            <p style="font-size: 0.8rem; margin-bottom: 20px;">For best results, upload images around 1080x1620px (Portrait).</p>
+            <div id="adminUploaders">
+                <!-- Dynamically generated uploaders -->
+            </div>
+            <button id="btnAdminClose" style="margin-top:20px;">Close Panel</button>
+        </div>
+    </div>
+
+    <!-- Invitation Gate -->
+    <div class="invitation-gate" id="invitationGate">
+        <div class="gate-door left-door"></div>
+        <div class="gate-door right-door"></div>
+        <div class="gate-content">
+            <h1 class="gate-names">عبد الغني × فرح</h1>
+            <p class="gate-date">
+                <span class="lang-ar">25 سبتمبر 2026</span>
+                <span class="lang-en">25 September 2026</span>
+            </p>
+            <button class="open-gate-btn" id="btnOpenGate">
+                <span class="lang-ar">افتح الدعوة</span>
+                <span class="lang-en">Open Invitation</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+
+
+    <!-- Music Controller -->
+    <button class="music-controller" id="musicBtn">
+        <span class="music-icon">♪</span>
+        <span class="music-text">MUSIC</span>
+        <div class="music-bars">
+            <span></span><span></span><span></span>
+        </div>
+    </button>
+    <audio id="bgMusic" loop>
+        <!-- The src will be injected by script.js -->
+    </audio>
+
+    <main class="cinematic-experience">
+        <!-- OPENING EXPERIENCE -->
+        <section class="scene opening opening-hidden" id="opening">
+            <div class="cinematic-image-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+                <img src="assets/images/cover.jpg" alt="Couple" class="parallax-img" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                <div class="overlay-dark" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.75) 100%); z-index: 2;"></div>
+                <div class="overlay-blur" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); mask-image: linear-gradient(to bottom, transparent, black 50%); -webkit-mask-image: linear-gradient(to bottom, transparent, black 50%); z-index: 2;"></div>
+            </div>
+            <div class="opening-content" style="z-index: 3; position: absolute; bottom: 15vh; width: 100%;">
+                <p class="editorial-line fade-in-up">IT STARTED WITH TWO...</p>
+                <div class="couple-reveal">
+                    <h1 class="groom-name fade-in-up delay-1" id="domGroomName">عبد الغني</h1>
+                    <span class="cross fade-in-up delay-2">×</span>
+                    <h1 class="bride-name fade-in-up delay-3" id="domBrideName">فرح</h1>
+                </div>
+
+            </div>
+                        <div class="scroll-indicator fade-in-up delay-4">
+                    <p>SCROLL TO ENTER</p>
+                    <div class="scroll-line"></div>
+                </div>
+        </section>
+
+        <!-- SCENE 02: TWO STORIES -->
+        <section class="scene scene-02" id="scene02">
+            <div class="split-container">
+                <div class="split-side left">
+                    <img src="assets/images/story-groom.jpg" alt="Groom Story" loading="lazy">
+                </div>
+                <div class="split-side right">
+                    <img src="assets/images/story-bride.jpg" alt="Bride Story" loading="lazy">
+                </div>
+                <div class="meeting-point">
+                    <h2 class="one-story"><span class="lang-en">ONE STORY</span><span class="lang-ar">حكاية واحدة</span></h2>
+                    <p class="arabic-text"><span class="lang-ar">حكاية بدأت بين شخصين...</span><span class="lang-en">A story started with two...</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 03: THE DATE -->
+        <section class="scene scene-03" id="scene03">
+            <div class="oversized-date">
+                <div class="date-en">
+                    <span class="num reveal-up">25</span>
+                    <span class="month reveal-up delay-1">SEPTEMBER</span>
+                    <span class="year reveal-up delay-2">2026</span>
+                </div>
+                <div class="date-ar reveal-up delay-3">
+                    <span id="domDateDay"></span>
+                    <span id="domDateAr"></span>
+                </div>
+            </div>
+            <div class="date-footer reveal-up delay-4">
+                <p class="en">THE DAY WE SAY YES</p>
+                <p class="ar">اليوم الذي تبدأ فيه أجمل حكاياتنا</p>
+            </div>
+        </section>
+
+        <!-- SCENE 04: THE WEDDING -->
+        <!-- SCENE 04: THE WEDDING & COUNTDOWN -->
+        <section class="scene scene-04" id="scene04">
+            <div class="editorial-layout" style="text-align: center; align-items: center; display: flex; flex-direction: column;">
+                <div class="info-block reveal-text delay-1" style="align-items: center; margin: 0 auto 40px auto; width: 100%;">
+                    <p class="day" id="domInfoDay"></p>
+                    <p class="date" id="domInfoDate"></p>
+                </div>
+                
+                <div class="countdown-wrapper reveal-up delay-2" style="width: 100%;">
+                    <div class="countdown-container" style="justify-content: center;">
+                        <div class="countdown-item"><span class="number" id="cdDays">00</span><span class="label">DAYS</span></div>
+                        <div class="countdown-item"><span class="number" id="cdHours">00</span><span class="label">HOURS</span></div>
+                        <div class="countdown-item"><span class="number" id="cdMins">00</span><span class="label">MINUTES</span></div>
+                        <div class="countdown-item"><span class="number" id="cdSecs">00</span><span class="label">SECONDS</span></div>
+                    </div>
+                    <div id="cdDone" style="display: none; text-align: center;">
+                        <h2 class="one-story"><span class="lang-en">TODAY IS THE DAY</span><span class="lang-ar">اليوم الموعود</span></h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 05: VENUE -->
+        <section class="scene scene-05" id="scene05">
+            <div class="venue-visual">
+                <img src="assets/images/venue.jpg" alt="Venue" loading="lazy">
+                <div class="venue-overlay"></div>
+            </div>
+            <div class="venue-content">
+                <h3 class="reveal-text">THE PLACE</h3>
+                <h2 class="arabic-title reveal-text delay-1" id="domVenueName1">وادي القمر</h2>
+                <h2 class="arabic-title reveal-text delay-2" id="domVenueName2">قاعة تمر حنة</h2>
+                <a href="#" target="_blank" class="btn-location reveal-up delay-3" id="domVenueLink">OPEN LOCATION</a>
+            </div>
+        </section>
+
+        
+
+        <!-- SCENE 07: THE STORY -->
+        <section class="scene scene-07" id="scene07">
+            <div class="story-sticky">
+                <div class="story-sequence">
+                    <div class="story-step" data-step="1">
+                        <h2>WE MET.</h2>
+                        <p>التقينا</p>
+                    </div>
+                    <div class="story-step" data-step="2">
+                        <h2>WE LAUGHED.</h2>
+                        <p>ضحكنا</p>
+                    </div>
+                    <div class="story-step" data-step="3">
+                        <h2>WE GREW.</h2>
+                        <p>كبرت حكايتنا</p>
+                    </div>
+                    <div class="story-step" data-step="4">
+                        <h2>AND SOMEHOW...</h2>
+                        <p>وفي لحظة...</p>
+                    </div>
+                    <div class="story-step" data-step="5">
+                        <h2>WE FOUND OUR WAY HERE.</h2>
+                        <p>وصلنا إلى هنا</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCENE 08: PHOTO EXPERIENCE -->
+        <section class="scene scene-08" id="scene08">
+            <div class="horizontal-sticky">
+                <div class="horizontal-scroll-container" id="domPhotoContainer">
+                    <!-- Photos will be injected here from script.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL SCENE -->
+        <section class="scene scene-final" id="sceneFinal">
+            <div class="final-content">
+                <h2 class="couple reveal-up" id="domFinalCouple">عبد الغني × فرح</h2>
+                <p class="date reveal-up delay-1" id="domFinalDate">الجمعة 25 سبتمبر</p>
+                <p class="venue reveal-up delay-2" id="domFinalVenue">وادي القمر – قاعة تمر حنة</p>
+                <div class="separator reveal-width delay-3"></div>
+                <h3 class="en reveal-up delay-4">THE NEXT CHAPTER STARTS HERE.</h3>
+                <h3 class="ar reveal-up delay-5">ومن هنا تبدأ الحكاية الجديدة.</h3>
+                <p class="with-love reveal-up delay-6">WITH LOVE</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lb-close" id="lbClose">×</button>
+        <button class="lb-prev" id="lbPrev">⟨</button>
+        <button class="lb-next" id="lbNext">⟩</button>
+        <img src="" alt="Fullscreen" class="lb-img" id="lbImg">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
