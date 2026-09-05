@@ -245,11 +245,10 @@ function applyConfiguration() {
     if (els.domPhotoContainer && weddingConfig.photos) {
         els.domPhotoContainer.innerHTML = '';
         const animations = ['photo-slide-left', 'photo-slide-right', 'photo-slide-left', 'photo-slide-right', 'photo-slide-left', 'photo-slide-right'];
-        const spanClasses = ['photo-wide', '', '', '', '', 'photo-wide']; // 1st and last span full width
         
         weddingConfig.photos.forEach((photoUrl, index) => {
             const div = document.createElement('div');
-            div.className = `photo-item ${animations[index % animations.length]} ${spanClasses[index] || ''}`.trim();
+            div.className = `photo-item ${animations[index % animations.length]}`.trim();
             div.style.setProperty('--delay', `${index * 0.1}s`);
             div.innerHTML = `<img src="${photoUrl}" alt="Gallery" loading="lazy">`;
             els.domPhotoContainer.appendChild(div);
